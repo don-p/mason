@@ -24,7 +24,7 @@ const colorTarget = {
 	},
 }
 
-class Target extends React.Component {
+class Target extends React.Component<IProps> {
 
   public props: IProps;
 

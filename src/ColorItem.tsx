@@ -4,10 +4,11 @@ import './ColorItem.css';
 import ItemTypes from './DndConstants';
 import store from './store';
 
-// export interface IProps {
-//   color: string;
-//   name: string;
-// }
+export interface IProps {
+  color: string;
+  id: string;
+  name: string;
+}
 
 // DnD drag source handling.
 const colorSource = {
@@ -34,36 +35,28 @@ const colorTarget = {
     store.dispatch({type: 'DROP-ORDER', data: item, index: idx});
 	},
 }
-// const collect = (connect: any, monitor: any) => {
-//   return {
-//     connectDragSource: connect.dragSource(),
-//     isDragging: monitor.isDragging()
-//   }
-// }
 
-// @DragSource(itemTypes.COLOR, colorSource, collect)
-class ColorItem extends React.Component {
+class ColorItem extends React.Component<IProps> {
 
   public props: any;
-  // private connectDragSource: any;
 
-  constructor(props: any) {
+  constructor(props: IProps) {
     super(props);
-    // this.connectDragSource = connectDragSource;
   }
 
   public render() {
     return this.props.connectDragSource(
       this.props.connectDropTarget(
-      <div className="ColorItem-dragsource" style={{background: this.props.color}}>{this.props.name}</div>
+        <div className="ColorItem-dragsource" style={{background: this.props.color}}>{this.props.name}</div>
       )
-      );
+    );
   }
 }
 
 const DndColorItem = DropTarget(ItemTypes.COLOR, colorTarget, (connect: DropTargetConnector) => ({
 	connectDropTarget: connect.dropTarget(),
-}))(ColorItem)
+}))(ColorItem);
+
 export default DragSource(ItemTypes.COLOR, colorSource, 	(connect: DragSourceConnector, monitor: DragSourceMonitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
