@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DropTarget } from 'react-dnd';
 import {connect as Connect} from 'react-redux';
-import ColorItem from './ColorItem';
+import ColorItemDroppable from './ColorItemDroppable';
 import ItemTypes from './DndConstants';
 import './Main.css';
 import store from './store';
@@ -41,7 +41,7 @@ class Target extends React.Component<IProps> {
           {
             // Render the dropped items in colorList as ColorItem components.
             this.props.colorList.map((item, index) => {
-              return <ColorItem key={index} id={item.id} color={item.color} name={item.name}/>
+              return <ColorItemDroppable key={index} id={item.id} color={item.color} name={item.name}/>
             })
           }
         </div>

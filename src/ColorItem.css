@@ -1,7 +1,16 @@
 
-.ColorItem-dragsource {
+.ColorItem {
   border-radius: 6px;
   padding: 6px;
   margin: 6px;
 }
 
+.ColorItem.droppable {
+  border: 1px solid #818181;
+  margin-left: 36px;
+  margin-right: 36px;
+}
+
+.ColorItem.draggable {
+  border: 1px solid #e9e9e9;
+}

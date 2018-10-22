@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ColorItem from './ColorItem';
+import ColorItemDraggable from './ColorItemDraggable';
 import './Main.css';
 
 // Static list of drag source item objects.
@@ -20,7 +20,7 @@ class Source extends React.Component {
     // Render the array of drag source objects as DOM elements, 
     // via ColorItem component.
     const sources = sourceList.map((source, index) => {
-      return <ColorItem key={source.id} id={source.id} color={source.color} name={source.name}/>
+      return <ColorItemDraggable key={source.id} id={source.id} color={source.color} name={source.name}/>
     })
 
     return (
